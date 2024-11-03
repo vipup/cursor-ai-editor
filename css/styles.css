@@ -1,0 +1,163 @@
+/* Base */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #1e1e1e;
+    color: #fff;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    height: calc(100vh - 40px);
+}
+
+
+.preview-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+#preview {
+    flex: 1;
+    background: white;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Header */
+.project-controls {
+    position: fixed;
+    top: 10px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.left-controls {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 4px;
+    padding: 0;
+}
+
+#project-name {
+    border: none;
+    border-radius: 4px 0 0 4px;
+    padding: 4px 8px;
+    color: #333;
+    background: transparent;
+    width: 150px;
+}
+
+.left-controls .icon-btn {
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 0 4px 4px 0;
+}
+
+/* Controls */
+.control-buttons { display: flex; gap: 10px; }
+.icon-btn { display: flex; align-items: center; justify-content: center; }
+.icon-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+.control-btn {
+    background: rgba(68, 68, 68, 0.8);
+    border: 1px solid #666;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    backdrop-filter: blur(2px);
+}
+.control-btn:hover { background: rgba(85, 85, 85, 0.9); }
+
+/* Content */
+#preview { flex: 1; background: white; border-radius: 5px; border: none; }
+input[type="file"] { display: none; }
+
+/* Add these styles */
+.dialog {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 19999 !important;
+}
+
+.dialog-content {
+    background: #2d2d2d;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #444;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.dialog-header {
+    padding: 15px;
+    border-bottom: 1px solid #444;
+}
+
+.dialog-header h2 {
+    margin: 0 0 10px 0;
+    color: #fff;
+}
+
+#search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #333;
+    color: #fff;
+}
+
+.project-list {
+    overflow-y: auto;
+    padding: 15px;
+    flex: 1;
+    max-height: 50vh;
+}
+
+.project-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #444;
+    gap: 10px;
+    color: #fff;
+}
+
+.project-item:hover {
+    background: #3d3d3d;
+}
+
+.dialog-footer {
+    padding: 15px;
+    border-top: 1px solid #444;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Make sure dialog is above everything else */
+#search-dialog {
+    position: fixed !important;
+    z-index: 9999 !important;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Code Editor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <link rel="stylesheet" href="css/styles.css"> 
+    <link rel="stylesheet" href="css/editor.css">
+    <link rel="stylesheet" href="css/console.css"> 
+</head>
+<body>
+    <div class="project-controls">
+        <input type="text" id="project-name" placeholder="Project Name" value="Untitled Project" style="color: #333; background: #fff; border: 1px solid #ccc; padding: 4px 8px; border-radius: 4px;">
+        <button class="control-btn icon-btn" id="search-stored" title="Search Stored Projects">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+        </button>
+        <div class="control-buttons">
+            <button class="control-btn" id="save-project">Save Project</button>
+            <input type="file" id="load-project" accept=".zip" style="display: none;">
+            <button class="control-btn" id="load-project-btn">Load Project</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="editors">
+            <div class="editor-container">
+                <div class="editor-header">
+                    <span>HTML</span>
+                    <button class="minimize-btn">−</button>
+                </div>
+                <div id="html-editor"></div>
+            </div>
+            <div class="editor-container">
+                <div class="editor-header">
+                    <span>CSS</span>
+                    <button class="minimize-btn">−</button>
+                </div>
+                <div id="css-editor"></div>
+            </div>
+            <div class="editor-container">
+                <div class="editor-header">
+                    <span>JavaScript</span>
+                    <button class="minimize-btn">−</button>
+                </div>
+                <div id="js-editor"></div>
+            </div>
+        </div>
+        <div class="preview-container">
+            <iframe id="preview"></iframe>
+            <div class="console-container">
+                <div class="console-header">
+                    <span>Console</span>
+                    <div class="console-settings">
+                        <label>Max lines: <input type="number" id="max-lines" value="50" min="1" max="1000" style="color: #333;"></label>
+                    </div>
+                    <button class="minimize-btn">−</button>
+                </div>
+                <div id="console-output"></div>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- Add this dialog to your HTML -->
+    <div id="search-dialog" class="dialog" style="display: none;">
+        <div class="dialog-content">
+            <div class="dialog-header">
+                <h2>Stored Projects</h2>
+                <input type="text" id="search-input" placeholder="Search projects...">
+            </div>
+            <div class="project-list">
+                <!-- Projects will be listed here dynamically -->
+            </div>
+            <div class="dialog-footer">
+                <button id="delete-selected" class="control-btn">Delete Selected</button>
+                <button id="close-dialog" class="control-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/console.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/index.js"></script>
+
+
+</body>
+</html> 
